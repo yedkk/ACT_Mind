@@ -1,0 +1,66 @@
+<!--pages/login/login.wxml-->
+<view class="container">
+  <view class="login-wrapper">
+    <!-- Logo区域 -->
+    <view class="logo-section">
+      <image class="logo" src="/images/logo.png" mode="aspectFit"></image>
+      <view class="app-name">ACT Mind</view>
+      <view class="app-desc">接受与承诺疗法 · 心理健康助手</view>
+    </view>
+
+    <!-- 登录表单 -->
+    <view class="login-form">
+      <view class="welcome-text">
+        <view class="welcome-title">欢迎使用</view>
+        <view class="welcome-subtitle">开始你的心理健康之旅</view>
+      </view>
+
+      <!-- 微信登录按钮 -->
+      <button 
+        class="login-btn" 
+        open-type="getUserInfo" 
+        bindgetuserinfo="onGetUserInfo"
+        loading="{{loginLoading}}"
+        disabled="{{loginLoading}}"
+      >
+        <image class="wechat-icon" src="/images/wechat.png"></image>
+        <text>{{loginLoading ? '登录中...' : '微信快速登录'}}</text>
+      </button>
+
+      <!-- 隐私协议 -->
+      <view class="privacy-agreement">
+        <text>登录即表示同意</text>
+        <text class="link" bindtap="showPrivacyPolicy">《隐私政策》</text>
+        <text>和</text>
+        <text class="link" bindtap="showUserAgreement">《用户协议》</text>
+      </view>
+    </view>
+
+    <!-- 功能介绍 -->
+    <view class="features">
+      <view class="feature-item">
+        <image class="feature-icon" src="/images/secure.png"></image>
+        <view class="feature-text">
+          <view class="feature-title">安全可靠</view>
+          <view class="feature-desc">数据加密保护隐私</view>
+        </view>
+      </view>
+      
+      <view class="feature-item">
+        <image class="feature-icon" src="/images/professional.png"></image>
+        <view class="feature-text">
+          <view class="feature-title">专业指导</view>
+          <view class="feature-desc">基于科学心理学理论</view>
+        </view>
+      </view>
+      
+      <view class="feature-item">
+        <image class="feature-icon" src="/images/community.png"></image>
+        <view class="feature-text">
+          <view class="feature-title">社区支持</view>
+          <view class="feature-desc">与他人分享交流经验</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

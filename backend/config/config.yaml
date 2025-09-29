@@ -1,0 +1,5 @@
+ENVIRONMENT: development
+PORT: 8080
+DB_PATH: ./data/act_mind.db
+JWT_SECRET: act-mind-jwt-secret-key-2024
+LOG_LEVEL: debug

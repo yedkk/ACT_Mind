@@ -1,0 +1,109 @@
+<!--pages/index/index.wxml-->
+<view class="container">
+  <!-- 头部欢迎区域 -->
+  <view class="header">
+    <view class="welcome-text">
+      <text class="greeting">{{greeting}}</text>
+      <text class="app-name">ACT Mind</text>
+    </view>
+    <view class="header-desc">
+      接受与承诺疗法，帮助你建立心理韧性
+    </view>
+  </view>
+
+  <!-- 快速功能入口 -->
+  <view class="quick-actions">
+    <view class="section-title">快速开始</view>
+    <view class="action-grid">
+      <view class="action-item" bindtap="goToAssessment">
+        <view class="action-icon">
+          <image src="/images/assessment.png" mode="aspectFit"></image>
+        </view>
+        <view class="action-title">心理测评</view>
+        <view class="action-desc">了解你的心理状态</view>
+      </view>
+      
+      <view class="action-item" bindtap="goToCommunity">
+        <view class="action-icon">
+          <image src="/images/community.png" mode="aspectFit"></image>
+        </view>
+        <view class="action-title">社区交流</view>
+        <view class="action-desc">与他人分享经验</view>
+      </view>
+      
+      <view class="action-item" bindtap="goToJournal">
+        <view class="action-icon">
+          <image src="/images/journal.png" mode="aspectFit"></image>
+        </view>
+        <view class="action-title">心情日记</view>
+        <view class="action-desc">记录每日心情</view>
+      </view>
+      
+      <view class="action-item" bindtap="goToExercise">
+        <view class="action-icon">
+          <image src="/images/exercise.png" mode="aspectFit"></image>
+        </view>
+        <view class="action-title">正念练习</view>
+        <view class="action-desc">冥想与放松训练</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 今日推荐 -->
+  <view class="recommendations">
+    <view class="section-title">今日推荐</view>
+    <view class="recommendation-card" wx:if="{{todayRecommendation}}">
+      <view class="card-header">
+        <view class="card-title">{{todayRecommendation.title}}</view>
+        <view class="card-tag">{{todayRecommendation.category}}</view>
+      </view>
+      <view class="card-content">
+        {{todayRecommendation.content}}
+      </view>
+      <view class="card-footer">
+        <button class="btn btn-outline" bindtap="readRecommendation">阅读全文</button>
+      </view>
+    </view>
+    
+    <view class="empty" wx:else>
+      <image class="empty-icon" src="/images/empty.png"></image>
+      <text>暂无推荐内容</text>
+    </view>
+  </view>
+
+  <!-- 最新动态 -->
+  <view class="recent-posts">
+    <view class="section-title">
+      <text>最新动态</text>
+      <text class="more-link" bindtap="goToCommunity">查看更多</text>
+    </view>
+    
+    <view class="post-list" wx:if="{{recentPosts.length > 0}}">
+      <view class="post-item" wx:for="{{recentPosts}}" wx:key="id" bindtap="goToPostDetail" data-id="{{item.id}}">
+        <view class="post-header">
+          <image class="user-avatar" src="{{item.user.avatar_url || '/images/default-avatar.png'}}"></image>
+          <view class="user-info">
+            <view class="user-name">{{item.user.nickname}}</view>
+            <view class="post-time">{{item.created_at}}</view>
+          </view>
+        </view>
+        <view class="post-title">{{item.title}}</view>
+        <view class="post-content">{{item.content}}</view>
+        <view class="post-stats">
+          <text class="stat-item">{{item.view_count}} 浏览</text>
+          <text class="stat-item">{{item.like_count}} 点赞</text>
+        </view>
+      </view>
+    </view>
+    
+    <view class="empty" wx:else>
+      <image class="empty-icon" src="/images/empty.png"></image>
+      <text>暂无动态</text>
+    </view>
+  </view>
+
+  <!-- 底部提示 -->
+  <view class="footer-tip">
+    <text>每天进步一点点，心理健康更重要</text>
+  </view>
+</view>
